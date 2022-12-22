@@ -10,6 +10,7 @@ Table of Contents
 * 3. NAUGHTY OR NICE
 * 4. FORM
 * 5. TRANSITION DIVS
+* 6. MEDIA QUERIES
 
 ===========================================
 ======================================== */
@@ -129,6 +130,10 @@ span.gold {
   color: #fff;
 }
 
+.prompt-cta h1 {
+  margin-top: 6rem;
+}
+
 h1.gold {
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: 5px;
@@ -152,11 +157,10 @@ form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding-top: 1rem;
   text-align: left;
   align-items: center;
   max-width: 80%;
-  margin: 0 auto;
+  margin: 5rem auto 0;
   font-family: 'Mountains of Christmas', cursive;
 }
 
@@ -309,4 +313,70 @@ button:active {
 		inset 0 0 6px #49da2c, /* inner glow */
 		inset 0 80px 80px -40px #58dd30, /* gradient */
 		1px 1px 3px rgba(0,0,0,0.75); /* shadow */
+}
+
+/* ====================[6]==================== */
+/* ===== MEDIA QUERIES ===== */
+
+@media (max-width: 58em) and (orientation: landscape) {
+  .countdown {
+    padding-top: 0.5rem;
+  }
+
+  span.gold {
+    font-size: 1.5rem;
+    -webkit-text-stroke: 0.4rem transparent;
+  }
+
+  .timer {
+    font-size: 1.5rem;
+  }
+
+  h1.gold {
+    padding: 0 0 0.5rem;
+    font-size: 1.75rem;
+  }
+
+  .prompt {
+    font-size: 1.75rem;
+  }
+
+  .prompt-cta h1 {
+    margin-top: 3rem;
+  }
+
+  form {
+    gap: 0;
+    margin: 1rem auto 0;
+  }
+
+  .form-field {
+    width: 10rem;
+  }
+
+  input[type="text"] {
+    font-size: 1.25rem;
+  }
+
+  .form-field label {
+    font-size: 1.25rem;
+    bottom: 30px;
+  }
+
+  button {
+    padding: 0.5rem 2rem;
+    font-size: 1.15rem;
+  }
+
+  .reasoning {
+    font-size: 1.75rem;
+    padding: 3rem 4rem 0;
+  }
+}
+
+@media (max-width: 20em) {
+  form {
+    margin: 1rem auto 0;
+    gap: 0;
+  }
 }
