@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/46665152/208281781-81c45b79-670a-4bb0-804d-30029ed68eb4.png)
+![image](https://user-images.githubusercontent.com/46665152/209052984-708f037b-d110-4675-abe2-37c17c6fcf52.png)
 # Naughty or Nice
 
 Are you naughty or nice? Enter you name to find out.
