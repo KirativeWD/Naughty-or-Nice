@@ -98,10 +98,10 @@ function calculateChristmasCountdown(){
     }
 
     //Add our counts to their corresponding HTML elements.
-    document.getElementById('days').innerHTML = days + 'd';
-    document.getElementById('hours').innerHTML = hours + 'h';
-    document.getElementById('mins').innerHTML = minutes + 'm';
-    document.getElementById('secs').innerHTML = seconds + 's';
+    document.querySelector('.days').innerHTML = days + 'd';
+    document.querySelector('.hours').innerHTML = hours + 'h';
+    document.querySelector('.mins').innerHTML = minutes + 'm';
+    document.querySelector('.secs').innerHTML = seconds + 's';
 
     //Recursive call after 1 second using setTimeout
     setTimeout(calculateChristmasCountdown, 1000);
@@ -157,16 +157,95 @@ var today = new Date();
 var month = today.getMonth();
 var day = today.getDate();
 
-if (month == 11 && day >= 26 || month == 0 || month == 1 || month == 2 && day <= 31) {
-  // If it's between Dec 26th and Mar 31st the vacation div and timer will display.
-  document.querySelector('.countdown').classList.toggle('hidden');
-  document.querySelector('.vacation').classList.toggle('hidden');
-} else if (month == 3 && day >= 1 || month == 4 || month == 5 || month == 6 || month == 7 || month == 8 || month == 9 || month == 10 && day <= 24) {
-  // If it's between Apr 1st and Dec 24th the Naughty or Nice prompt will display and the vacation div will hide
-  document.querySelector('.prompt-cta').classList.toggle('hidden');
-  document.querySelector('.vacation').classList.toggle('hidden');
-} else if (month == 11 && day == 25) {
-  // If it's Christmas day, the Christmas div will display and timer will hide
-  document.querySelector('.christmas').classList.toggle('hidden');
-  document.querySelector('.countdown').classList.toggle('hidden');
-}
+setInterval(function() {
+
+  const promptCta = document.querySelector('.prompt-cta');
+  const christmasCta = document.querySelector('.christmas');
+  const vacationCta = document.querySelector('.vacation');
+  const countdownCta = document.querySelector('.countdown');
+
+  const promptHidden = document.querySelector('.prompt-cta').classList.contains('hidden');
+  const christmasHidden = document.querySelector('.christmas').classList.contains('hidden');
+  const vacationHidden = document.querySelector('.vacation').classList.contains('hidden');
+  const countdownHidden = document.querySelector('.countdown').classList.contains('hidden');
+
+  if (month == 11 && day >= 26 || month == 0 || month == 1 || month == 2 && day <= 31) {
+    // If it's between Dec 26th and Mar 31st the vacation div and timer will display.
+
+    if(vacationHidden) {
+      vacationCta.classList.toggle('hidden');
+      promptCta.classList.toggle('hidden');
+    }
+
+    if(countdownHidden) {
+      countdownCta.classList.toggle('hidden');
+    }
+
+    if(!christmasHidden) {
+      christmasCta.classList.toggle('hidden');
+    };
+  
+  } else if (month == 3 && day >= 1 || month == 4 || month == 5 || month == 6 || month == 7 || month == 8 || month == 9 || month == 10 && day <= 24) {
+    // If it's between Apr 1st and Dec 24th the Naughty or Nice prompt will display and the vacation div will hide
+
+    if(!vacationHidden) {
+      vacationCta.classList.toggle('hidden');
+    }
+
+    if(promptHidden) {
+      promptCta.classList.toggle('hidden');
+    }
+
+  } else if (month == 11 && day == 25) {
+    // If it's Christmas day, the Christmas div will display and timer will hide
+
+    if(!countdownHidden) {
+      countdownCta.classList.toggle('hidden');
+    };
+
+    if(christmasHidden) {
+      christmasCta.classList.toggle('hidden');
+    };
+
+    if(!promptHidden) {
+      promptCta.classList.toggle('hidden');
+    }
+
+  }
+}, 1000);
+
+// Adjusting tabbing when hidden
+
+const prompt = document.querySelector('.prompt-cta');
+const fname = document.querySelector('#fname');
+const lname = document.querySelector('#lname');
+const subBtn = document.querySelector('.subBtn');
+
+const inputs = [fname, lname, subBtn];
+
+const inputsObserver = new MutationObserver(entries => {
+  if(prompt.classList.contains('hidden')) {
+    inputs.forEach((input) => {
+      input.tabIndex = '-1';
+    })
+  } else {
+    inputs.forEach((input) => {
+      input.tabIndex = '0';
+    })
+  }
+});
+
+inputsObserver.observe(prompt, { attributes: true });
+
+const reasoning = document.querySelector('.reasoning');
+const checkAgain = document.querySelector('.checkAgain');
+
+const reasoningObserver = new MutationObserver(entries => {
+  if(reasoning.classList.contains('hidden')) {
+    checkAgain.tabIndex = '-1'
+  } else {
+    checkAgain.tabindex = 0;
+  }
+});
+
+reasoningObserver.observe(prompt, { attributes: true });
