@@ -10,68 +10,76 @@
     <title>Naughty or Nice?</title>
 </head>
 <body>
-    <div class="wrapper">
-      <div id="snowflakes"></div>
 
-      <div class="countdown">
-        <span class="gold">Christmas Countdown</span>
-        <div class="timer">
-          <div id="days"></div>
-          <div id="hours"></div>
-          <div id="mins"></div>
-          <div id="secs" class="animated"></div>
-        </div>
-      </div>
-
-      <!--- MERRY CHRISTMAS DIV -->
-      <div class="christmas centered hidden">
-        <h1 class="gold">MERRY CHRISTMAS!</h1>
-      </div>
-
-      <div class="vacation centered gold hidden">
-        <p>It's too early to check the naughty or nice list! Keep doing your best and check back later!</p>
-      </div>
+  <div class="progress-cta">
+    <span class="sr-only">Please wait</span>
+    <p class="gold">Communicating with North Pole...</p>
+    <div class="progress">
+      <div class="progress-value"></div>
+    </div>
+  </div>
     
-      <!-- VUE APP -->
-      <div id="app">
+  <div class="wrapper">
+    <div id="snowflakes"></div>
 
-        <!-- NAUGHTY OR NICE PROMPT-->
-        <div class="prompt-cta centered">
-          <h1 class="gold"><span class="naughty">Naughty</span> or <span class="nice">Nice?</span></h1>
-          <p class="prompt">Check Santa's list to find out!</p>
-          <form id="myForm" autocomplete="off" v-on:submit.prevent="submitForm">
-            <div class="user-input">
-              <div class="form-field">
-                <input type="text" id="fname" required="" v-model="firstName">
-                <label for="fname">First Name</label>
-              </div>
-              <div class="form-field">
-                <input type="text" id="lname" required="" v-model="lastName">
-                <label for="lname">Last Name</label>
-              </div>
-            </div>
-            <button class="subBtn" v-on:click="chooseReason">Check List</button>
-          </form>
-        </div>
-
-        <!-- REASONING DIV -->
-        <div class="checkList centered hidden prompt">
-          <p>Hello, {{ firstName }}! We're checking the list now!</p>
-        </div>
-        <div class="checkTwice centered hidden prompt">
-          <p>Checking it twice...</p>
-        </div>
-        <div class="reasoning centered hidden gold">
-          <p>It looks like {{ firstName }} {{ lastName }} is on the nice list for {{ reason }}! Keep up the great work, {{ firstName }}, we believe in you!</p>
-          <button class="checkAgain" v-on:click="checkAgain">Check Another Name</button>
-        </div>
+    <div class="countdown">
+      <span class="gold">Christmas Countdown</span>
+      <div class="timer">
+        <div class="days"></div>
+        <div class="hours"></div>
+        <div class="mins"></div>
+        <div class="secs" class="animated"></div>
       </div>
-
-        
+    </div>
+      
+    <!--- MERRY CHRISTMAS DIV -->
+    <div class="christmas centered hidden">
+      <h1 class="gold">MERRY CHRISTMAS!</h1>
     </div>
 
+    <div class="vacation centered gold hidden">
+      <p>It's too early to check the naughty or nice list! Keep doing your best and check back later!</p>
+    </div>
+  
+    <!-- VUE APP -->
+    <div id="app">
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+      <!-- NAUGHTY OR NICE PROMPT-->
+      <div class="prompt-cta centered">
+        <h1 class="gold"><span class="naughty">Naughty</span> or <span class="nice">Nice?</span></h1>
+        <p class="prompt">Check Santa's list to find out!</p>
+        <form id="myForm" autocomplete="off" v-on:submit.prevent="submitForm">
+          <div class="user-input">
+            <div class="form-field">
+              <input type="text" id="fname" required="" v-model="firstName">
+              <label for="fname">First Name</label>
+            </div>
+            <div class="form-field">
+              <input type="text" id="lname" required="" v-model="lastName">
+              <label for="lname">Last Name</label>
+            </div>
+          </div>
+          <button class="subBtn" v-on:click="chooseReason">Check List</button>
+        </form>
+      </div>
+
+      <!-- REASONING DIV -->
+      <div class="checkList centered hidden prompt">
+        <p>Hello, {{ firstName }}! We're checking the list now!</p>
+      </div>
+      <div class="checkTwice centered hidden prompt">
+        <p>Checking it twice...</p>
+      </div>
+      <div class="reasoning centered hidden gold">
+        <p>It looks like {{ firstName }} {{ lastName }} is on the nice list for {{ reason }}! Keep up the great work, {{ firstName }}, we believe in you!</p>
+        <button class="checkAgain" v-on:click="checkAgain">Check Another Name</button>
+      </div>
+    </div>
+        
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 </body>
 </html>
