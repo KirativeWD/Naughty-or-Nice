@@ -6,11 +6,12 @@ Table of Contents
 ===========================================
 
 * 1. GENERAL CONTENT
-* 2. CHRISTMAS COUNTDOWN
-* 3. NAUGHTY OR NICE
-* 4. FORM
-* 5. TRANSITION DIVS
-* 6. MEDIA QUERIES
+* 2. LOADING SCREEN
+* 3. CHRISTMAS COUNTDOWN
+* 4. NAUGHTY OR NICE
+* 5. FORM
+* 6. TRANSITION DIVS
+* 7. MEDIA QUERIES
 
 ===========================================
 ======================================== */
@@ -34,6 +35,13 @@ body{
 
 .wrapper {
   text-align: center;
+  opacity: 0;
+  animation: fadeIn 1.5s 7.5s forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .centered {
@@ -47,6 +55,16 @@ div.hidden {
   opacity: 0;
   z-index: -2;
   transition: opacity 1500ms linear;
+}
+
+.sr-only {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
 }
 
 /* SNOWFLAKE CANVAS */
@@ -70,11 +88,65 @@ div.hidden {
 }
 
 /* ====================[2]==================== */
+/* ===== LOADING SCREEN ===== */
+
+.progress-cta {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  opacity: 1;
+  animation: fade 1500ms 6s forwards;
+}
+
+@keyframes fade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.progress-cta p {
+  padding: 0.25rem 1rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.progress {
+  background: rgba(255,255,255,0.1);
+  justify-content: flex-start;
+  border-radius: 2rem;
+  align-items: center;
+  padding: 0 0.35rem;
+  display: flex;
+  height: 2.5rem;
+  width: 90%;
+  max-width: 26rem;
+  margin-top: 2rem;
+}
+
+.progress-value {
+  animation: load 4s 1s normal forwards;
+  box-shadow: 0 10px 40px -10px #fff;
+  border-radius: 2rem;
+  background: #fff;
+  height: 1.85rem;
+  width: 0;
+}
+
+@keyframes load {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* ====================[3]==================== */
 /* ===== CHRISTMAS COUNTDOWN ===== */
 
 .countdown {
   padding-top: 2rem;
   transition: opacity 1500ms linear;
+  text-align: center;
 }
 
 span.gold {
@@ -114,7 +186,7 @@ span.gold {
   }
 }
 
-/* ====================[3]==================== */
+/* ====================[4]==================== */
 /* ===== NAUGHTY NICE ===== */
 
 .prompt-cta {
@@ -150,7 +222,7 @@ h1.gold {
   color: green;
 }
 
-/* ====================[4]==================== */
+/* ====================[5]==================== */
 /* ===== FORM ===== */
 
 form {
@@ -248,7 +320,7 @@ button:active {
 	transition: 50ms linear;
 }
 
-/* ====================[5]==================== */
+/* ====================[6]==================== */
 /* ===== TRANSITION DIVS ===== */
 
 /* CHRISTMAS DIV */
@@ -315,7 +387,7 @@ button:active {
 		1px 1px 3px rgba(0,0,0,0.75); /* shadow */
 }
 
-/* ====================[6]==================== */
+/* ====================[7]==================== */
 /* ===== MEDIA QUERIES ===== */
 
 @media (max-width: 58em) and (orientation: landscape) {
