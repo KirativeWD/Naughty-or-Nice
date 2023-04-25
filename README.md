@@ -5,4 +5,6 @@ Are you naughty or nice? Enter you name to find out.
 
 ## Background
 
+Pages removed until I have time to fix and adjust the JavaScript!
+
 This is a final project I created for one of my front-end courses. It is built with HTML, CSS, and JavaScript and implements particles.js and Vue.js.
